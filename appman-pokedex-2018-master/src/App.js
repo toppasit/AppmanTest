@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import './App.css'
+import Cardpage from './pages/card'
+import Dex from './pages/pokedex'
 
 const COLORS = {
   Psychic: "#f8a5c2",
@@ -20,6 +22,8 @@ class App extends Component {
     return (
       <div className="App">
         <div>asdasdasd</div>
+        <Cardpage/>
+        <Dex/>
       </div>
     )
   }
