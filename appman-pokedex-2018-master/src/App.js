@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import './App.css'
 import Cardpage from './pages/card'
 import Dex from './pages/pokedex'
+import Mainpage from './pages/mainmenu'
 
 const COLORS = {
   Psychic: "#f8a5c2",
@@ -21,9 +22,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div>asdasdasd</div>
-        <Cardpage/>
-        <Dex/>
+        <Mainpage/>
       </div>
     )
   }
