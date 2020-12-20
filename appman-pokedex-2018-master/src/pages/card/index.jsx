@@ -1,30 +1,19 @@
 import React from 'react'
 import _ from 'lodash'
+import {CardContainer, Card} from './styled'
 
 const card = () => {
   const arr = [9,7,5,4,6,8,7,5] //pokemon query will be here
 
-  const cardContainer = {
-    display: "flex",
-    flexWrap: "wrap",
-    width: "100%"
-  };
-
-  const pokeCard = {
-    backgroundColor: "#f3f4f7",
-    width: "49%",
-    margin: "2px",
-  };
-
   return (
-    <div style={cardContainer}>
+    <CardContainer>
     {
       _.map(arr, v => 
-        <div style={pokeCard}>
+        <Card>
           <p>{v}</p>
-        </div>)
+        </Card>)
     }
-    </div>
+    </CardContainer>
   )
 }
 
