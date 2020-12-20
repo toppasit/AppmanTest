@@ -14,6 +14,7 @@ export const DexBody = styled.div`
   background-color: ${colorList.modalContentBackground};
   height: 93%;
   padding: 8px 4px;
+  overflow: auto;
 `
 
 export const SearchBar = styled.div`

@@ -12,7 +12,7 @@ const mainpage = () => {
   return (
     <MainContainer>
       <HeadText>My Pokedex</HeadText>
-      <p onClick={() => console.log(add)}>check state</p>
+      {/* <p onClick={() => console.log(add)}>check state</p> */}
       <CardContainer/>
       <AddContainer>
         <p onClick={() => setAdd(true)}>Click me!</p>
