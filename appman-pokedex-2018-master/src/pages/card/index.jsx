@@ -1,23 +1,31 @@
 import React from 'react'
-// import pokeInfo from '../../../mock/cards.json'
+import _ from 'lodash'
 
-const cardpage = () => {
-  // console.log(pokeInfo);
+const card = () => {
+  const arr = [9,7,5,4,6,8,7,5] //pokemon query will be here
+
+  const cardContainer = {
+    display: "flex",
+    flexWrap: "wrap",
+    width: "100%"
+  };
+
   const pokeCard = {
-    border: "1px solid red",
-    padding: "4px"
+    backgroundColor: "#f3f4f7",
+    width: "49%",
+    margin: "2px",
   };
-  const mystyle = {
-    color: "white",
-    backgroundColor: "DodgerBlue",
-    padding: "10px",
-    fontFamily: "Arial"
-  };
+
   return (
-    <div style={pokeCard}>
-      <p>card</p>
+    <div style={cardContainer}>
+    {
+      _.map(arr, v => 
+        <div style={pokeCard}>
+          <p>{v}</p>
+        </div>)
+    }
     </div>
   )
 }
 
-export default cardpage
+export default card

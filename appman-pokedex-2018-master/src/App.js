@@ -1,10 +1,8 @@
 import React, { Component } from 'react'
 import './App.css'
-import Cardpage from './pages/card'
-import Dex from './pages/pokedex'
 import Mainpage from './pages/mainmenu'
 
-const COLORS = {
+export const COLORS = {
   Psychic: "#f8a5c2",
   Fighting: "#f0932b",
   Fairy: "#c44569",
