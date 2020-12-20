@@ -17,5 +17,4 @@ export const HeadText = styled.h1`
 export const AddContainer = styled.div`
   position: absolute;
   bottom: 0%;
-  /* width: 100%; */
 `

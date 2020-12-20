@@ -3,7 +3,6 @@ import {colorList} from '../../constant/color'
 
 export const DexContainer = styled.div`
   position: absolute;
-  /* border: 1px solid red; */
   width: 100%;
   background-color: ${colorList.modalOutside};
   height: inherit;
@@ -18,7 +17,7 @@ export const DexBody = styled.div`
 `
 
 export const SearchBar = styled.div`
-  box-shadow: 0 0 4px ${colorList.searchBoxBorder};
+  box-shadow: 0 0 5px ${colorList.searchBoxBorder};
   display: flex;
   justify-content: space-between;
 `
@@ -34,4 +33,44 @@ export const SearchIcon = styled.img`
   :hover {
     cursor: pointer;
   }
+`
+
+export const ListContainer = styled.div`
+  padding: 8px;
+`
+
+export const EachPokemon = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  background-color: ${colorList.cardBackground};
+  margin: 16px 0;
+  padding: 8px;
+  box-shadow: 0 0 5px ${colorList.cardBoxShadow};
+  :hover {
+    box-shadow: 0 0 5px ${colorList.cardBoxShadowHover};
+  }
+`
+
+export const PokeInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 0 16px;
+`
+
+export const PokeName = styled.h2`
+  font-family: Gaegu;
+  font-weight: lighter;
+  margin: 8px 0 0 0;
+`
+
+export const StatusContainer = styled.div`
+`
+
+export const EachStatus = styled.div`
+`
+
+export const StatusBar = styled.div`
+`
+
+export const HappinessContainer = styled.div`
 `
