@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import {colorList} from '../../constant/color'
 
 export const MainContainer = styled.div`
   display: flex;
