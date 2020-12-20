@@ -5,8 +5,16 @@ export const MainContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow: auto;
+  height: inherit;
 `
 
 export const HeadText = styled.h1`
   font: Gaegu;
+`
+
+export const AddContainer = styled.div`
+  /* position: fixed;
+  bottom: 0;
+  width: 100%; */
 `
