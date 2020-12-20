@@ -3,16 +3,16 @@ import _ from 'lodash'
 import {CardContainer, Card} from './styled'
 
 const card = () => {
-  const arr = [9,7,5,4,6,8,7,5,1,2,5,8,9,6,4,5,2,5,7,8,4,5,5,65,4] //pokemon query will be here
+  const arr = [9,7,5,4,6,8,7] //pokemon query will be here
 
   return (
     <CardContainer>
-    {
-      _.map(arr, v => 
-        <Card>
-          <p>{v}</p>
-        </Card>)
-    }
+      {
+        _.map(arr, v => 
+          <Card>
+            <p>{v}</p>
+          </Card>)
+      }
     </CardContainer>
   )
 }

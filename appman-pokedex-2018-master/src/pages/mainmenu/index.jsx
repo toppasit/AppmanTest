@@ -7,17 +7,18 @@ import PokeDexContainer from '../pokedex'
 
 const mainpage = () => {
   const [add, setAdd] = useState(false)
-  console.log('add: ', add)
+  console.log('(mainpage) add: ', add)
 
   return (
     <MainContainer>
       <HeadText>My Pokedex</HeadText>
+      <p onClick={() => console.log(add)}>check state</p>
       <CardContainer/>
       <AddContainer>
-        <p onClick={() => setAdd(!add)}>Click me!</p>
+        <p onClick={() => setAdd(true)}>Click me!</p>
       </AddContainer>
       {
-        add && <PokeDexContainer/> 
+        add && <PokeDexContainer add={add} setAdd={() => setAdd()}/> 
       }
     </MainContainer>
   )

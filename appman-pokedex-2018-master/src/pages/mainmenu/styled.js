@@ -10,11 +10,12 @@ export const MainContainer = styled.div`
 `
 
 export const HeadText = styled.h1`
-  font: Gaegu;
+  font-family: Atma;
+  font-weight: 700;
 `
 
 export const AddContainer = styled.div`
-  /* position: fixed;
-  bottom: 0;
-  width: 100%; */
+  position: absolute;
+  bottom: 0%;
+  /* width: 100%; */
 `
