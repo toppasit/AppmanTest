@@ -15,13 +15,10 @@ const addToTeam = (card, myTeam, setMyTeam, pokeList, setPokeList) => {
 const pokedex = ({setAdd, pokeList, setPokeList, myTeam, setMyTeam}) => {
   const [search, setSearch] = useState('')
   const [searchType, setSearchType] = useState('name')
-  let typeList = []
-  typeList = _.map(pokeList, v => _.union(typeList, v.type))
+
+  const typeList = _.uniq(_.map(pokeList, v => v.type))
 
   pokeList = _.map(pokeList, v => {
-
-    typeList = _.union(typeList, v.type)
-
     if(searchType === "name") {
       if(_.includes(v.name.toLowerCase(), search.toLowerCase())) {
         return v
@@ -37,14 +34,24 @@ const pokedex = ({setAdd, pokeList, setPokeList, myTeam, setMyTeam}) => {
     <DexContainer onClick={() => setAdd(false)}>
       <DexBody onClick={(e) => e.stopPropagation()}>
         <SearchBar>
-          <SearchInput placeholder="Find Pokemon" onChange={e => setSearch(e.target.value)}/>
+          <SearchInput placeholder="Find Pokemon" onChange={e => setSearch(e.target.value)} value={search}/>
           <SearchIcon src={searchimg} width="50px" height="50px"/>
         </SearchBar>
         Search by:
-        <SearchSelect id="select" onChange={e => setSearchType(e.target.value)}>
+        <SearchSelect onChange={e => {
+          setSearchType(e.target.value)
+          if(e.target.value === "type") setSearch("Psychic")
+        }}>
           <option id="name" value="name">Name</option>
           <option id="type" value="type">Type</option>
         </SearchSelect>
+        {
+          searchType === "type" && <SearchSelect onChange={e => setSearch(e.target.value)}>
+            {
+              _.map(typeList, v => <option id={v} value={v}>{v}</option>)
+            }
+          </SearchSelect>
+        }
         <ListContainer>
           {
             _.map(pokeList, v => !_.isUndefined(v) && <EachPokemon>
