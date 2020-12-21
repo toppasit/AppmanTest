@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import React, { useEffect, useState } from 'react'
 import _ from 'lodash'
-import {MainContainer, HeadText, AddContainer} from './styled'
+import {MainContainer, HeadText, AddContainer, AddButton} from './styled'
 import CardContainer from '../card'
 import PokeDexContainer from '../pokedex'
 
@@ -51,7 +51,7 @@ const mainpage = () => {
       <HeadText>My Pokedex</HeadText>
       <CardContainer myTeam={myTeam} setMyTeam={setMyTeam} pokeList={newPokeList} setPokeList={setPokeList}/>
       <AddContainer>
-        <p onClick={() => setAdd(true)}>Click me!</p>
+        <AddButton onClick={() => setAdd(true)}>+</AddButton>
       </AddContainer>
       {
         add && <PokeDexContainer add={add} setAdd={setAdd} pokeList={newPokeList} setPokeList={setPokeList} myTeam={myTeam} setMyTeam={setMyTeam}/> 

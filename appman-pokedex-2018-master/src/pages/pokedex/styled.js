@@ -12,6 +12,7 @@ export const DexContainer = styled.div`
 export const DexBody = styled.div`
   margin: 2%;
   background-color: ${colorList.modalContentBackground};
+  box-shadow: 0 0 5px ${colorList.modalContentBoxShadow};
   height: 93%;
   padding: 8px 4px;
   overflow: auto;
@@ -91,4 +92,8 @@ export const AddButtonContainer = styled.div`
   border: 1px solid green;
   height: fit-content;
   margin: 0;
+  color: ${colorList.colorAddButton};
+  :hover {
+    cursor: pointer;
+  }
 `

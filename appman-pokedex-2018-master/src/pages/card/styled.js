@@ -60,4 +60,8 @@ export const RemoveButtonContainer = styled.div`
   border: 1px solid green;
   height: fit-content;
   margin: 0;
+  color: ${colorList.colorAddButton};
+  :hover {
+    cursor: pointer;
+  }
 `
