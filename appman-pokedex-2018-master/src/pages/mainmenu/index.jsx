@@ -9,7 +9,6 @@ const mainpage = () => {
   const [add, setAdd] = useState(false)
   const [pokeList, setPokeList] = useState([])
   const [myTeam, setMyTeam] = useState()
-  console.log('add: ', add)
   
   useEffect(() => {
     fetch('http://localhost:3030/api/cards?limit=100')
@@ -50,9 +49,7 @@ const mainpage = () => {
   return (
     <MainContainer>
       <HeadText>My Pokedex</HeadText>
-      {/* <p onClick={() => console.log(add)}>check state</p> */}
-      {/* {console.log(newPokeList)} */}
-      <CardContainer myTeam={myTeam} setMyTeam={setMyTeam}/>
+      <CardContainer myTeam={myTeam} setMyTeam={setMyTeam} pokeList={newPokeList} setPokeList={setPokeList}/>
       <AddContainer>
         <p onClick={() => setAdd(true)}>Click me!</p>
       </AddContainer>

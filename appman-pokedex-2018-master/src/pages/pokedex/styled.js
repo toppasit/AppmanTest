@@ -90,4 +90,5 @@ export const StatusBar = styled.div`
 export const AddButtonContainer = styled.div`
   border: 1px solid green;
   height: fit-content;
+  margin: 0;
 `
