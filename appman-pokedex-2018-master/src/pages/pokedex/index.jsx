@@ -15,11 +15,15 @@ const addToTeam = (card, myTeam, setMyTeam, pokeList, setPokeList) => {
   else setMyTeam(_.concat(myTeam, card))
 }
 
-const pokedex = ({add, setAdd, pokeList, setPokeList, myTeam, setMyTeam}) => {
-  const [search, setSearch] = useState()
+const pokedex = ({setAdd, pokeList, setPokeList, myTeam, setMyTeam}) => {
+  const [search, setSearch] = useState('')
 
-  // if(!_.isUndefined(search)) pokeList = _.map(pokeList, v => v = _.find(v.name, search))
-  // if(!_.isUndefined(search)) console.log(_.includes(pokeList, v => v.name search))
+  pokeList = _.map(pokeList, v => {
+    if(_.includes(v.name, search)) {
+      console.log(v.name)
+      return v
+    }
+  })
 
   return (
     <DexContainer onClick={() => setAdd(false)}>
@@ -30,7 +34,7 @@ const pokedex = ({add, setAdd, pokeList, setPokeList, myTeam, setMyTeam}) => {
         </SearchBar>
         <ListContainer>
           {
-            _.map(pokeList, v => <EachPokemon>
+            _.map(pokeList, v => !_.isUndefined(v) && <EachPokemon>
               <PokeInfo>
                 <img src={v.imageUrl} width="150px" height="200px"/>
                 <PokeStat>

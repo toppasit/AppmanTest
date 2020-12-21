@@ -56,7 +56,7 @@ const mainpage = () => {
         <AddButton onClick={() => setAdd(true)}>+</AddButton>
       </AddContainer>
       {
-        add && <PokeDexContainer add={add} setAdd={setAdd} pokeList={newPokeList} setPokeList={setPokeList} myTeam={myTeam} setMyTeam={setMyTeam}/> 
+        add && <PokeDexContainer setAdd={setAdd} pokeList={newPokeList} setPokeList={setPokeList} myTeam={myTeam} setMyTeam={setMyTeam}/> 
       }
     </MainContainer>
   )
