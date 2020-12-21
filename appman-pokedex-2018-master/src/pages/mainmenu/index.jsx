@@ -41,7 +41,9 @@ const mainpage = () => {
       })
     }
 
-    v = {...v, happiness: parseInt(((v.hp / 10) + (v.dmg / 10) + 10) / 5)}
+    v = {...v, happiness: parseInt(((v.hp / 10) + (v.dmg / 10) + 10 - (v.weak / 100)) / 5)}
+
+    console.log(v.hp, v.str, v.weak, v.dmg, v.happiness)
     
     return v
   })

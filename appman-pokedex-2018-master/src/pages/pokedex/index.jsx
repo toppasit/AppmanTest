@@ -1,9 +1,10 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import React, {useState} from 'react'
 import _ from 'lodash'
-import {DexContainer, DexBody, SearchBar, SearchInput, SearchIcon, ListContainer, EachPokemon, PokeInfo, PokeStat, PokeName, StatusContainer,
-  EachStatus, Text, AddButtonContainer} from './styled'
+import {DexContainer, DexBody, SearchBar, SearchInput, SearchIcon, ListContainer, EachPokemon, PokeInfo, PokeStat, PokeName,
+  EachStatus, AddButtonContainer, LevelBar, LevelContent} from './styled'
 import searchimg from '../../img/search.png'
+import happyimg from '../../img/cute.png'
 
 const addToTeam = (card, myTeam, setMyTeam, pokeList, setPokeList) => {
   console.log(card)
@@ -16,6 +17,9 @@ const addToTeam = (card, myTeam, setMyTeam, pokeList, setPokeList) => {
 
 const pokedex = ({add, setAdd, pokeList, setPokeList, myTeam, setMyTeam}) => {
   const [search, setSearch] = useState()
+
+  // if(!_.isUndefined(search)) pokeList = _.map(pokeList, v => v = _.find(v.name, search))
+  // if(!_.isUndefined(search)) console.log(_.includes(pokeList, v => v.name search))
 
   return (
     <DexContainer onClick={() => setAdd(false)}>
@@ -31,24 +35,31 @@ const pokedex = ({add, setAdd, pokeList, setPokeList, myTeam, setMyTeam}) => {
                 <img src={v.imageUrl} width="150px" height="200px"/>
                 <PokeStat>
                   <PokeName>{v.name.toUpperCase()}</PokeName>
-                  <StatusContainer>
-                    <EachStatus>
-                      <Text>hp</Text>
-                      <Text>{v.hp}</Text>
+                  <div>
+                    <EachStatus justifyContent="space-between">
+                      <div>HP</div>
+                      <LevelBar>
+                        <LevelContent width={`${v.hp}%`}> </LevelContent>
+                      </LevelBar>
+                    </EachStatus>
+                    <EachStatus justifyContent="space-between">
+                      <div>STR</div>
+                      <LevelBar>
+                        <LevelContent width={`${v.str}%`}></LevelContent>
+                      </LevelBar>
+                    </EachStatus>
+                    <EachStatus justifyContent="space-between">
+                      <div>WEAK</div>
+                      <LevelBar>
+                        <LevelContent width={`${v.weak}%`}></LevelContent>
+                      </LevelBar>
                     </EachStatus>
                     <EachStatus>
-                      <Text>str</Text>
-                      <Text>{v.str}</Text>
+                      {
+                        _.map(_.range(v.happiness), v => <img src={happyimg} width="50px" height="50px"/>)
+                      }
                     </EachStatus>
-                    <EachStatus>
-                      <Text>weak</Text>
-                      <Text>{v.weak}</Text>
-                    </EachStatus>
-                    <EachStatus>
-                      <Text>Happy</Text>
-                      <Text>{v.happiness}</Text>
-                    </EachStatus>
-                  </StatusContainer>
+                  </div>
                 </PokeStat>
               </PokeInfo>
               <AddButtonContainer onClick={() => addToTeam(v, myTeam, setMyTeam, pokeList, setPokeList)}>Add</AddButtonContainer>

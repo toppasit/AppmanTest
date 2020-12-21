@@ -59,13 +59,14 @@ export const EachPokemon = styled.div`
 export const PokeInfo = styled.div`
   display: flex;
   flex-direction: row;
+  width: 100%;
 `
 
 export const PokeStat = styled.div`
   display: flex;
   flex-direction: column;
   margin: 0 0 0 16px;
-  border: 1px solid black;
+  width: 60%;
 `
 
 export const PokeName = styled.h2`
@@ -74,21 +75,29 @@ export const PokeName = styled.h2`
   margin: 8px 0 0 0;
 `
 
-export const StatusContainer = styled.div`
-  border: 1px solid red;
-`
-
 export const EachStatus = styled.div`
   display: flex;
   flex-direction: row;
-  border: 1px solid blue;
+  justify-content: ${props => props.justifyContent};
+  padding: 4px;
 `
 
 export const Text = styled.p`
   margin: 0;
 `
 
-export const StatusBar = styled.div`
+export const LevelBar = styled.div`
+  background-color: ${colorList.levelTubeBackground};
+  box-shadow: 0 0 5px ${colorList.levelTubeBoxShadow};
+  border-radius: 15px;
+  width: 90%;
+`
+
+export const LevelContent = styled.div`
+  background-color: ${colorList.levelTubeValueBackground};
+  border-radius: 15px;
+  padding: 13px 0;
+  width: ${props => props.width};
 `
 
 export const AddButtonContainer = styled.div`
