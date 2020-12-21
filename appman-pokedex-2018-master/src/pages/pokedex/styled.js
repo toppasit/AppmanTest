@@ -1,3 +1,4 @@
+import e from 'cors'
 import styled from 'styled-components'
 import {colorList} from '../../constant/color'
 
@@ -41,7 +42,7 @@ export const ListContainer = styled.div`
 
 export const EachPokemon = styled.div`
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   background-color: ${colorList.cardBackground};
   margin: 16px 0;
   padding: 8px;
@@ -53,8 +54,14 @@ export const EachPokemon = styled.div`
 
 export const PokeInfo = styled.div`
   display: flex;
+  flex-direction: row;
+`
+
+export const PokeStat = styled.div`
+  display: flex;
   flex-direction: column;
   margin: 0 0 0 16px;
+  border: 1px solid black;
 `
 
 export const PokeName = styled.h2`
@@ -64,14 +71,23 @@ export const PokeName = styled.h2`
 `
 
 export const StatusContainer = styled.div`
+  border: 1px solid red;
 `
 
 export const EachStatus = styled.div`
+  display: flex;
   flex-direction: row;
+  border: 1px solid blue;
+`
+
+export const Text = styled.p`
+  margin: 0;
 `
 
 export const StatusBar = styled.div`
 `
 
-export const HappinessContainer = styled.div`
+export const AddButtonContainer = styled.div`
+  border: 1px solid green;
+  height: fit-content;
 `

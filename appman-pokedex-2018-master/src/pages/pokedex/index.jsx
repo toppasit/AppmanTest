@@ -1,29 +1,51 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import React, {useState} from 'react'
 import _ from 'lodash'
-import {DexContainer, DexBody, SearchBar, SearchInput, SearchIcon, ListContainer, EachPokemon, PokeInfo, PokeName, StatusContainer,
-  EachStatus, HappinessContainer} from './styled'
+import {DexContainer, DexBody, SearchBar, SearchInput, SearchIcon, ListContainer, EachPokemon, PokeInfo, PokeStat, PokeName, StatusContainer,
+  EachStatus, Text, AddButtonContainer} from './styled'
 import searchimg from '../../img/search.png'
 
-const pokedex = ({add, setAdd, pokeList}) => {
+const addToTeam = (card, myTeam, setMyTeam, pokeList, setPokeList) => {
+  console.log(card)
+
+  setPokeList(_.remove(pokeList, v => v !== card))
+  
+  if(_.isUndefined(myTeam)) setMyTeam([card.name])
+  else setMyTeam(_.concat(myTeam, card.name))
+}
+
+
+const pokedex = ({add, setAdd, pokeList, setPokeList, myTeam, setMyTeam}) => {
   const [search, setSearch] = useState()
   console.log(search)
+  console.log('myTeam', myTeam)
 
-  console.log('props: ', add, setAdd, pokeList)
+  // const newPokeList = _.map(pokeList, v => {
+  //   if(_.isNaN(parseInt(v.hp))) v.hp = 0
+  //   else if(parseInt(v.hp) > 100) v.hp = 100
+  //   else v.hp = parseInt(v.hp)
 
-  const newPokeList = _.map(pokeList, v => {
-    if(_.isNaN(parseFloat(v.hp))) v.hp = 0
-    else if(parseFloat(v.hp) > 100) v.hp = 100
+  //   if(!_.isUndefined(v.attacks)) v = {...v, str: v.attacks.length * 50}
+  //   else v = {...v, str: 0}
 
-    if(!_.isUndefined(v.attacks) && v.attacks.length === 2) v = {...v, str: 100}
-    else if(!_.isUndefined(v.attacks) && v.attacks.length === 1) v = {...v, str: 50}
-    else v = {...v, str: 0}
+  //   if(!_.isUndefined(v.weaknesses)) v = {...v, weak: v.weaknesses.length * 100}
+  //   else v = {...v, weak: 0}
 
-    if(!_.isUndefined(v.weaknesses) && v.weaknesses.length === 1) v = {...v, weak: 100}
-    else v = {...v, weak: 0}
+  //   let dmgVal = 0
+  //   if(_.isUndefined(v.attacks)) v = {...v, dmg: dmgVal}
+  //   else {
+  //     _.map(v.attacks, w => {
+  //       if(w.damage === "") w.damage = 0
+  //       dmgVal += parseInt(w.damage)
+  //       v = {...v, dmg: dmgVal}
+  //       return v
+  //     })
+  //   }
 
-    return v
-  })
+  //   v = {...v, happiness: parseInt(((v.hp / 10) + (v.dmg / 10) + 10) / 5)}
+    
+  //   return v
+  // })
 
   return (
     <DexContainer onClick={() => setAdd(false)}>
@@ -36,32 +58,38 @@ const pokedex = ({add, setAdd, pokeList}) => {
         </SearchBar>
         <ListContainer>
           {
-            _.map(newPokeList, v => <EachPokemon>
+            _.map(pokeList, v => <EachPokemon>
               
-              {console.log(v.attacks)}
-
-              <img src={v.imageUrl} width="150px" height="200px"/>
+              {
+                // console.log(v.weaknesses)
+                // console.log(v.name, 'HP: ', v.hp, ' STR: ', v.str, ' WKS: ', v.weak, ' DMG: ', v.dmg, ' HPY: ', v.happiness)
+              }
               <PokeInfo>
-                <PokeName>{v.name.toUpperCase()}</PokeName>
-                <StatusContainer>
-                  <EachStatus>
-                    <h4>hp</h4>
-                    <p>{v.hp}</p>
-                  </EachStatus>
-                  <EachStatus>
-                    <p>str</p>
-                    <p>{v.str}</p>
-                  </EachStatus>
-                  <EachStatus>
-                    <p>weak</p>
-                    <p>{v.weak}</p>
-                  </EachStatus>
-                </StatusContainer>
-                <HappinessContainer>
-                  <p>Happy</p>
-                  <p>{((parseFloat(v.hp)/ 10) + (parseFloat(v.damage) / 10) + 10 - (v.weakness)) / 5}</p>
-                </HappinessContainer>
+                <img src={v.imageUrl} width="150px" height="200px"/>
+                <PokeStat>
+                  <PokeName>{v.name.toUpperCase()}</PokeName>
+                  <StatusContainer>
+                    <EachStatus>
+                      <Text>hp</Text>
+                      <Text>{v.hp}</Text>
+                    </EachStatus>
+                    <EachStatus>
+                      <Text>str</Text>
+                      <Text>{v.str}</Text>
+                    </EachStatus>
+                    <EachStatus>
+                      <Text>weak</Text>
+                      <Text>{v.weak}</Text>
+                    </EachStatus>
+                    <EachStatus>
+                      <Text>Happy</Text>
+                      <Text>{v.happiness}</Text>
+                    </EachStatus>
+                  </StatusContainer>
+                </PokeStat>
               </PokeInfo>
+              {/* <AddButtonContainer onClick={() => _.isUndefined(myTeam) ? setMyTeam([v.name]) : setMyTeam(_.concat(myTeam, v.name))}>Add</AddButtonContainer> */}
+              <AddButtonContainer onClick={() => addToTeam(v, myTeam, setMyTeam, pokeList, setPokeList)}>Add</AddButtonContainer>
             </EachPokemon>)
           }
         </ListContainer>
