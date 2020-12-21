@@ -18,6 +18,9 @@ export const Card = styled.div`
   box-shadow: 0 0 5px ${colorList.cardBoxShadow};
   :hover {
     box-shadow: 0 0 5px ${colorList.cardBoxShadowHover};
+    div {
+      visibility: visible;
+    }
   }
 `
 
@@ -57,11 +60,12 @@ export const StatusBar = styled.div`
 `
 
 export const RemoveButtonContainer = styled.div`
-  border: 1px solid green;
   height: fit-content;
   margin: 0;
   color: ${colorList.colorAddButton};
   :hover {
     cursor: pointer;
   }
+  font-size: 24px;
+  visibility: hidden;
 `
