@@ -10,7 +10,6 @@ const removeFromTeam = (myPokemon, myTeam, setMyTeam, pokeList, setPokeList) => 
 } 
   
 const card = ({myTeam, setMyTeam, pokeList, setPokeList}) => {
-  console.log(myTeam)
   return (
     <CardContainer>
       {

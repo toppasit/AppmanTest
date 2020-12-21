@@ -7,10 +7,7 @@ import searchimg from '../../img/search.png'
 import happyimg from '../../img/cute.png'
 
 const addToTeam = (card, myTeam, setMyTeam, pokeList, setPokeList) => {
-  console.log(card)
-
   setPokeList(_.remove(pokeList, v => v !== card))
-  
   if(_.isUndefined(myTeam)) setMyTeam([card])
   else setMyTeam(_.concat(myTeam, card))
 }
@@ -35,9 +32,6 @@ const pokedex = ({setAdd, pokeList, setPokeList, myTeam, setMyTeam}) => {
       }
     }
   })
-
-  console.log(typeList)
-  console.log(pokeList)
 
   return (
     <DexContainer onClick={() => setAdd(false)}>
