@@ -110,3 +110,11 @@ export const AddButtonContainer = styled.div`
   font-size: 24px;
   visibility: hidden;
 `
+
+export const SearchSelect = styled.select`
+  margin: 4px 0 0 4px;
+  padding: 4px;
+  font-family: 'Atma';
+  border-radius: 4px;
+  border: 1px solid ${colorList.searchBoxBorder};
+`

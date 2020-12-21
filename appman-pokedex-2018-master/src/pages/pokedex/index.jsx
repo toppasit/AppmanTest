@@ -2,7 +2,7 @@
 import React, {useState} from 'react'
 import _ from 'lodash'
 import {DexContainer, DexBody, SearchBar, SearchInput, SearchIcon, ListContainer, EachPokemon, PokeInfo, PokeStat, PokeName,
-  EachStatus, AddButtonContainer, LevelBar, LevelContent} from './styled'
+  EachStatus, AddButtonContainer, LevelBar, LevelContent, SearchSelect} from './styled'
 import searchimg from '../../img/search.png'
 import happyimg from '../../img/cute.png'
 
@@ -17,13 +17,27 @@ const addToTeam = (card, myTeam, setMyTeam, pokeList, setPokeList) => {
 
 const pokedex = ({setAdd, pokeList, setPokeList, myTeam, setMyTeam}) => {
   const [search, setSearch] = useState('')
+  const [searchType, setSearchType] = useState('name')
+  let typeList = []
+  typeList = _.map(pokeList, v => _.union(typeList, v.type))
 
   pokeList = _.map(pokeList, v => {
-    if(_.includes(v.name, search)) {
-      console.log(v.name)
-      return v
+
+    typeList = _.union(typeList, v.type)
+
+    if(searchType === "name") {
+      if(_.includes(v.name.toLowerCase(), search.toLowerCase())) {
+        return v
+      }
+    } else {
+      if(_.includes(v.type.toLowerCase(), search.toLowerCase())) {
+        return v
+      }
     }
   })
+
+  console.log(typeList)
+  console.log(pokeList)
 
   return (
     <DexContainer onClick={() => setAdd(false)}>
@@ -32,6 +46,11 @@ const pokedex = ({setAdd, pokeList, setPokeList, myTeam, setMyTeam}) => {
           <SearchInput placeholder="Find Pokemon" onChange={e => setSearch(e.target.value)}/>
           <SearchIcon src={searchimg} width="50px" height="50px"/>
         </SearchBar>
+        Search by:
+        <SearchSelect id="select" onChange={e => setSearchType(e.target.value)}>
+          <option id="name" value="name">Name</option>
+          <option id="type" value="type">Type</option>
+        </SearchSelect>
         <ListContainer>
           {
             _.map(pokeList, v => !_.isUndefined(v) && <EachPokemon>
