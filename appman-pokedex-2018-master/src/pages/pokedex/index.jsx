@@ -15,7 +15,13 @@ const pokedex = ({add, setAdd, pokeList}) => {
     if(_.isNaN(parseFloat(v.hp))) v.hp = 0
     else if(parseFloat(v.hp) > 100) v.hp = 100
 
-    // if()
+    if(!_.isUndefined(v.attacks) && v.attacks.length === 2) v = {...v, str: 100}
+    else if(!_.isUndefined(v.attacks) && v.attacks.length === 1) v = {...v, str: 50}
+    else v = {...v, str: 0}
+
+    if(!_.isUndefined(v.weaknesses) && v.weaknesses.length === 1) v = {...v, weak: 100}
+    else v = {...v, weak: 0}
+
     return v
   })
 
@@ -32,7 +38,7 @@ const pokedex = ({add, setAdd, pokeList}) => {
           {
             _.map(newPokeList, v => <EachPokemon>
               
-              {console.log(parseFloat(v.hp))}
+              {console.log(v.attacks)}
 
               <img src={v.imageUrl} width="150px" height="200px"/>
               <PokeInfo>
@@ -43,10 +49,12 @@ const pokedex = ({add, setAdd, pokeList}) => {
                     <p>{v.hp}</p>
                   </EachStatus>
                   <EachStatus>
-                    str
+                    <p>str</p>
+                    <p>{v.str}</p>
                   </EachStatus>
                   <EachStatus>
                     <p>weak</p>
+                    <p>{v.weak}</p>
                   </EachStatus>
                 </StatusContainer>
                 <HappinessContainer>

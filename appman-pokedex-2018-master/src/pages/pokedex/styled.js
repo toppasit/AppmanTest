@@ -67,6 +67,7 @@ export const StatusContainer = styled.div`
 `
 
 export const EachStatus = styled.div`
+  flex-direction: row;
 `
 
 export const StatusBar = styled.div`

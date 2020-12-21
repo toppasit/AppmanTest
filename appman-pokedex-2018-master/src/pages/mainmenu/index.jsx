@@ -8,6 +8,7 @@ import PokeDexContainer from '../pokedex'
 const mainpage = () => {
   const [add, setAdd] = useState(false)
   const [pokeList, setPokeList] = useState([])
+  const [myTeam, setMyTeam] = useState([])
   console.log('add: ', add)
   
   useEffect(() => {
@@ -23,7 +24,7 @@ const mainpage = () => {
     <MainContainer>
       <HeadText>My Pokedex</HeadText>
       {/* <p onClick={() => console.log(add)}>check state</p> */}
-      <CardContainer/>
+      <CardContainer myTeam={myTeam} setMyTeam={setMyTeam}/>
       <AddContainer>
         <p onClick={() => setAdd(true)}>Click me!</p>
       </AddContainer>

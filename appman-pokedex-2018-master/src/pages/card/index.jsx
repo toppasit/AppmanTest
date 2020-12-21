@@ -2,7 +2,7 @@ import React from 'react'
 import _ from 'lodash'
 import {CardContainer, Card} from './styled'
 
-const card = () => {
+const card = ({myTeam, setMyTeam}) => {
   const arr = [9,7,5,4,6,8,7] //pokemon query will be here
 
   return (
